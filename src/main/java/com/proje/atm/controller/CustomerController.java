@@ -22,7 +22,7 @@ public class CustomerController {
   CustomerService customerService;
 
   @PostMapping("/add-money")
-  public CustomerResponseModel addMoney(@RequestBody AddMoneyRequestModel requestModel) {
+    public CustomerResponseModel addMoney(@RequestBody AddMoneyRequestModel requestModel) {
     return customerService.addMoney(requestModel);
   }
 

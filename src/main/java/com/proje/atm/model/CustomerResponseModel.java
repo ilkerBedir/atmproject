@@ -11,5 +11,5 @@ public class CustomerResponseModel {
   private double balance;
   private String password;
   private int failedLoginCount;
-  private long bank;
+  private Long bank;
 }
