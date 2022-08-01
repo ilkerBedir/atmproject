@@ -1,6 +1,5 @@
 package com.proje.atm.service;
 
-import com.proje.atm.entity.BankEntity;
 import com.proje.atm.entity.CustomerEntity;
 import com.proje.atm.model.CustomerResponseModel;
 import com.proje.atm.repository.BankRepository;
@@ -10,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;

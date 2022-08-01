@@ -39,7 +39,7 @@ public class MainService {
     throw new IllegalStateException("giris basarisiz");
   }
 
-  public void register(RegisterRequestModel requestModel) {
+  public CustomerResponseModel register(RegisterRequestModel requestModel) {
     log.trace("register yapıldı");
     requestModel.getBankID();
     BankEntity bank = bankRepository.findById(requestModel.getBankID()).get();
@@ -58,6 +58,7 @@ public class MainService {
     bank.setLastAccountNumber(accountNumberStr);
     bankRepository.save(bank);
     customerRepository.save(customer);
+    return customer.convertModel();
   }
 
 }

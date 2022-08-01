@@ -32,8 +32,8 @@ public class CustomerService {
     if (customer.getBalance() - requestModel.getMoney() < 0) {
       throw new IllegalStateException("Bakiye Yetersiz");
     }
-    customer.setBalance(requestModel.getMoney() - customer.getBalance());
-    CustomerEntity destCustomer = customerRepository.findByAccountNumber(String.valueOf(requestModel.getDestCustomerAccountNumber())).get();
+    customer.setBalance(customer.getBalance()-requestModel.getMoney());
+    CustomerEntity destCustomer = customerRepository.findByAccountNumber(requestModel.getDestCustomerAccountNumber()).get();
     destCustomer.setBalance(requestModel.getMoney()+destCustomer.getBalance());
     customerRepository.save(customer);
     customerRepository.save(destCustomer);
@@ -45,7 +45,7 @@ public class CustomerService {
     if (customer.getBalance() - requestModel.getMoney() < 0) {
       throw new IllegalStateException("Bakiye Yetersiz");
     }
-    customer.setBalance(requestModel.getMoney() - customer.getBalance());
+    customer.setBalance( customer.getBalance()-requestModel.getMoney());
     customerRepository.save(customer);
     log.trace("withdrawMoney yapıldı");
     return customer.convertModel();

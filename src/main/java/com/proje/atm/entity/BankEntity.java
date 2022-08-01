@@ -1,11 +1,9 @@
 package com.proje.atm.entity;
 
-import com.proje.atm.model.BankResponseModel;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @Data
 @Entity
@@ -23,14 +21,7 @@ public class BankEntity {
   private String lastAccountNumber;
 
   @Column(name = "customers")
-  @OneToMany(mappedBy = "id", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+  @OneToMany(mappedBy = "id", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
   private Set<CustomerEntity> customers;
 
-  public BankResponseModel convertModel() {
-    BankResponseModel bankResponseModel = new BankResponseModel();
-    bankResponseModel.setId(this.id);
-    bankResponseModel.setName(this.name);
-    bankResponseModel.setCustomers(this.customers.stream().map(customers -> customers.getId()).collect(Collectors.toList()));
-    return bankResponseModel;
-  }
 }
